@@ -255,31 +255,20 @@ Frontend dev server will launch at `http://localhost:5173`.
 2. Create database named `digitalHerodb`.
 3. Obtain connection parameters (`DB_HOST`, `DB_PORT`, `DB_USERNAME`, `DB_PASSWORD`).
 
-### 2. Backend Deployment (Render / Railway)
+### 2. Backend Deployment (Railway / Render)
 1. Push repository to GitHub.
-2. Create a new **Web Service** on [Render.com](https://render.com) or [Railway.app](https://railway.app).
-3. Connect repository `srinivas039/Lead-Desk`.
-4. Set Root Directory to `backend`.
-5. **Build Command**: `./mvnw clean package -DskipTests`
-6. **Start Command**: `java -jar target/leaddesk-backend-0.0.1-SNAPSHOT.jar`
-7. **Environment Variables**:
-   ```env
-   DB_HOST=ep-square-scene-azw4kaa8.c-3.ap-southeast-1.aws.neon.tech
-   DB_PORT=5432
-   DB_NAME=neondb
-   DB_USERNAME=neondb_owner
-   DB_PASSWORD=npg_JT0bKiYILr9N
-   JWT_SECRET=404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-   CORS_ALLOWED_ORIGINS=https://your-frontend.vercel.app,http://localhost:5173
-   ```
+2. Connect repository to Railway or Render web service.
+3. Set root directory to `backend/`.
+4. **Build Command**: `chmod +x mvnw && ./mvnw clean package -DskipTests`.
+5. Set start command: `java -jar target/leaddesk-backend-0.0.1-SNAPSHOT.jar`.
+6. Add environment variables: `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`, `JWT_SECRET`, `CORS_ALLOWED_ORIGINS`.
 
 ### 3. Frontend Deployment (Vercel)
 1. Import repository in [Vercel](https://vercel.com).
 2. Set Root Directory to `frontend`.
-3. **Build Command**: `npm run build`
-4. **Output Directory**: `dist`
-5. **Environment Variable**: `VITE_API_BASE_URL=https://your-backend.onrender.com/api`
-
+3. Build Command: `npm run build`.
+4. Output Directory: `dist`.
+5. Environment Variable: `VITE_API_BASE_URL=https://your-backend.up.railway.app/api`.
 
 ---
 
