@@ -1,6 +1,8 @@
 package com.leaddesk.exception;
 
 import com.leaddesk.dto.ErrorResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -15,6 +17,8 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
@@ -37,6 +41,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<ErrorResponse> handleBadCredentialsException(BadCredentialsException ex) {
+        logger.warn("Bad credentials attempt: {}", ex.getMessage());
         ErrorResponse response = ErrorResponse.builder()
                 .status(HttpStatus.UNAUTHORIZED.value())
                 .message("Invalid username or password")
@@ -59,9 +64,10 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGlobalException(Exception ex) {
+        logger.error("Unhandled exception occurred on server: ", ex);
         ErrorResponse response = ErrorResponse.builder()
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                .message("An unexpected error occurred on the server. Please try again later.")
+                .message("An unexpected error occurred on the server: " + (ex.getMessage() != null ? ex.getMessage() : ex.getClass().getSimpleName()))
                 .timestamp(LocalDateTime.now())
                 .build();
 
