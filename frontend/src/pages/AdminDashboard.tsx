@@ -26,7 +26,7 @@ export const AdminDashboard: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [updatingId, setUpdatingId] = useState<number | null>(null);
-  
+
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const fetchLeads = useCallback(async (query: string = '') => {
@@ -244,7 +244,7 @@ export const AdminDashboard: React.FC = () => {
               placeholder="Search leads by name, email, or status..."
               className="w-full pl-11 pr-24 py-3.5 bg-white border border-[#DFD8C8] rounded-2xl text-[#1A241E] placeholder-[#8C8275] text-sm focus:outline-none focus:ring-2 focus:ring-[#1F3B2C]/20 focus:border-[#1F3B2C] transition-all shadow-sm"
             />
-            
+
             {/* Keyboard Shortcut Pill Indicator */}
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
               <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 rounded-md bg-[#F3EFE6] border border-[#DFD8C8] text-[10px] font-mono text-[#7C7267] font-semibold">
