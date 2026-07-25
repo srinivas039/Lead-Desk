@@ -263,12 +263,12 @@ Frontend dev server will launch at `http://localhost:5173`.
 5. Set **Root Directory**: `backend` (or leave empty if using root Dockerfile).
 6. Set **Environment Variables**:
    ```env
-   DB_HOST=ep-square-scene-azw4kaa8.c-3.ap-southeast-1.aws.neon.tech
+   DB_HOST=<your_neon_db_host>
    DB_PORT=5432
    DB_NAME=neondb
    DB_USERNAME=neondb_owner
-   DB_PASSWORD=npg_JT0bKiYILr9N
-   JWT_SECRET=404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+   DB_PASSWORD=<your_neon_db_password>
+   JWT_SECRET=<your_jwt_secret>
    CORS_ALLOWED_ORIGINS=https://your-frontend.vercel.app,http://localhost:5173
    ```
 
