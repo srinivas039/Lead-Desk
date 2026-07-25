@@ -1,0 +1,8 @@
+{
+  "css.lint.unknownAtRules": "ignore",
+  "java.project.sourcePaths": [
+    "backend/src/main/java",
+    "backend/src/test/java"
+  ],
+  "java.import.maven.enabled": true
+}
