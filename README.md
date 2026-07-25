@@ -255,13 +255,22 @@ Frontend dev server will launch at `http://localhost:5173`.
 2. Create database named `digitalHerodb`.
 3. Obtain connection parameters (`DB_HOST`, `DB_PORT`, `DB_USERNAME`, `DB_PASSWORD`).
 
-### 2. Backend Deployment (Railway / Render)
+### 2. Backend Deployment on Render (Docker Runtime)
 1. Push repository to GitHub.
-2. Connect repository to Railway or Render web service.
-3. Set root directory to `backend/`.
-4. **Build Command**: `chmod +x mvnw && ./mvnw clean package -DskipTests`.
-5. Set start command: `java -jar target/leaddesk-backend-0.0.1-SNAPSHOT.jar`.
-6. Add environment variables: `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`, `JWT_SECRET`, `CORS_ALLOWED_ORIGINS`.
+2. On [Render.com](https://render.com), click **New > Web Service**.
+3. Select your repository `srinivas039/Lead-Desk`.
+4. Select **Language: Docker**.
+5. Set **Root Directory**: `backend` (or leave empty if using root Dockerfile).
+6. Set **Environment Variables**:
+   ```env
+   DB_HOST=ep-square-scene-azw4kaa8.c-3.ap-southeast-1.aws.neon.tech
+   DB_PORT=5432
+   DB_NAME=neondb
+   DB_USERNAME=neondb_owner
+   DB_PASSWORD=npg_JT0bKiYILr9N
+   JWT_SECRET=404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+   CORS_ALLOWED_ORIGINS=https://your-frontend.vercel.app,http://localhost:5173
+   ```
 
 ### 3. Frontend Deployment (Vercel)
 1. Import repository in [Vercel](https://vercel.com).
